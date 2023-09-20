@@ -11,8 +11,13 @@ scripts:
   - docker run -e CI=true react-test npm test
 
 after_success: 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password=stdin
   - docker build -t multi-client ./client
+  - docker push  multi-client
   - docker build -t multi-nginx ./nginx
+  - docker push  multi-nginx
   - docker build -t multi-server ./server
+  - docker push  multi-server
   - docker build -t multi-worker ./worker
+  - docker push  multi-worker
 
