@@ -12,12 +12,12 @@ scripts:
 
 after_success: 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password=stdin
-  - docker build -t multi-client ./client
-  - docker push  multi-client
-  - docker build -t multi-nginx ./nginx
-  - docker push  multi-nginx
-  - docker build -t multi-server ./server
-  - docker push  multi-server
-  - docker build -t multi-worker ./worker
-  - docker push  multi-worker
+  - docker build -t dumpdacode/multi-client ./client
+  - docker push  dumpdacode/multi-client
+  - docker build -t dumpdacode/multi-nginx ./nginx
+  - docker push  dumpdacode/multi-nginx
+  - docker build -t dumpdacode/multi-server ./server
+  - docker push  dumpdacode/multi-server
+  - docker build -t dumpdacode/multi-worker ./worker
+  - docker push  dumpdacode/multi-worker
 
