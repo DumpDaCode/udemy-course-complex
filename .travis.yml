@@ -10,7 +10,7 @@ script:
   - docker run -e CI=true react-test npm test
 
 after_success: 
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password=stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker build -t dumpdacode/multi-client ./client
   - docker push  dumpdacode/multi-client
   - docker build -t dumpdacode/multi-nginx ./nginx
